@@ -1,0 +1,20 @@
+.board {
+    width: 55rem;
+    height: 55rem;
+    background-color: rebeccapurple;
+    margin: auto auto;
+
+    display: grid;
+    grid-template-columns: repeat(11, 5rem);
+    grid-template-rows: repeat(11, 5rem);
+}
+
+.middleBoard {
+    grid-row: 3/10;
+    grid-column: 3/10;
+    background-color: white;
+}
+
+.corner {
+
+}

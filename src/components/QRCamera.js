@@ -1,8 +1,10 @@
 import QrReader from 'react-qr-reader'
+import Lobby from "./Lobby"
 import { useState, useEffect } from "react"
 import io from "socket.io-client";
 let socket;
-
+let input;
+let closeNumber = false;
 export default function QRCamera(){
   const CONNECTION_PORT = "localhost:3001/"
   useEffect(() => {
@@ -11,11 +13,16 @@ export default function QRCamera(){
 
   const [result, setResult] = useState('');
   const [amountUsers, setamountUsers] = useState(1);
-
+  const [number, setnumber] = useState(1);
   useEffect(()=>{
     socket.on('successful_connection', (amountPlayers)=>{
       console.log('succes', amountPlayers);
-      setamountUsers(amountPlayers)
+      setamountUsers(amountPlayers);
+      if(!closeNumber){
+        closeNumber = true;
+        amountPlayers--;
+        setnumber(amountPlayers);
+      }
     })
   })
 
@@ -29,23 +36,30 @@ export default function QRCamera(){
   const handleError = err => {
     console.error(err)
   }
-  const [input, setinput] = useState('');
+  
   const changeInput = (e) =>{
-    setinput(e.target.value);
+    input = (e.target.value);
   }
 
   const joinRoom = () =>{
     socket.emit('join_room', input);
+    setResult(input);
   }
 
     return (
         <div>
-            <p>Camera</p>
-            <p>Amount players in room: {amountUsers}</p>
-            <input onChange={(e)=>changeInput(e)} type="text"/>
-            <button onClick={()=>joinRoom()}>Join</button>
-            <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: '30%' }}/>
-            <p>{result}</p>
+            {result === '' ? 
+            <div>
+              <p>Camera</p>
+              <p>Code: {result}</p>
+              <input onChange={(e)=>changeInput(e)} type="text"/>
+              <button onClick={()=>joinRoom()}>Join</button>
+              <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: '30%' }}/>
+            </div> 
+            : 
+            <div>
+              <Lobby playerNumber={number} room={result} amountUsers={amountUsers} />
+            </div>}
         </div>
     )
 }
