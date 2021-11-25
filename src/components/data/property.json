@@ -1,0 +1,114 @@
+{
+    "properties": [
+        {
+            "id": 1,
+            "name": "Pull-up",
+            "price": 60
+        },
+        {
+            "id": 2,
+            "name": "Push-up",
+            "price": 60
+        },
+        {
+            "id": 3,
+            "name": "Lat pulldown",
+            "price": 100
+        },
+        {
+            "id": 4,
+            "name": "Cable row",
+            "price": 100
+        },
+        {
+            "id": 5,
+            "name": "Bent over row",
+            "price": 120
+        },
+        {
+            "id": 6,
+            "name": "Skullcrusher",
+            "price": 140
+        },
+        {
+            "id": 7,
+            "name": "Tricep pushdown",
+            "price": 140
+        },
+        {
+            "id": 8,
+            "name": "Dips",
+            "price": 160
+        },
+        {
+            "id": 9,
+            "name": "Lateral raise",
+            "price": 180
+        },
+        {
+            "id": 10,
+            "name": "Shoulder press",
+            "price": 180
+        },
+        {
+            "id": 11,
+            "name": "Upright row",
+            "price": 200
+        },
+        {
+            "id": 12,
+            "name": "Hammer curl",
+            "price": 220
+        },
+        {
+            "id": 13,
+            "name": "Preacher curl",
+            "price": 220
+        },
+        {
+            "id": 14,
+            "name": "Concentration curl",
+            "price": 240
+        },
+        {
+            "id": 15,
+            "name": "Leg curl",
+            "price": 260
+        },
+        {
+            "id": 16,
+            "name": "Hip thrust",
+            "price": 260
+        },
+        {
+            "id": 17,
+            "name": "Leg extension",
+            "price": 280
+        },
+        {
+            "id": 18,
+            "name": "Dumbell chest press",
+            "price": 300
+        },
+        {
+            "id": 19,
+            "name": "Cable flyes",
+            "price": 300
+        },
+        {
+            "id": 20,
+            "name": "Benchpress",
+            "price": 320
+        },
+        {
+            "id": 21,
+            "name": "Squat",
+            "price": 350
+        },
+        {
+            "id": 22,
+            "name": "Deadlift",
+            "price": 400
+        }
+    ]
+}

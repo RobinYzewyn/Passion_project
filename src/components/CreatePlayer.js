@@ -52,7 +52,7 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
                     <button disabled={youReady} onClick={readSettings}>Gelezen</button>
             </div> 
             : 
-            <Game money={money} color={color} room={room} playerAmount={amountPlayers}/>
+            <Game number={playerNumber} moneyX={money} color={color} room={room} playerAmount={amountPlayers}/>
            )
            : 
            <BoardInterface/>}

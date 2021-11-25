@@ -1,0 +1,40 @@
+{
+    "roomCode": {
+        "Player0": {
+            "number": 0,
+            "money": 1500,
+            "color": "blue",
+            "throw": true,
+            "property": [],
+            "in_jail": false,
+            "skip_throw": false
+        },
+        "Player1": {
+            "number": 1,
+            "money": 1500,
+            "color": "blue",
+            "throw": false,
+            "property": [],
+            "in_jail": false,
+            "skip_throw": true
+        },
+        "Player2": {
+            "number": 2,
+            "money": 1500,
+            "color": "blue",
+            "throw": false,
+            "property": [],
+            "in_jail": false,
+            "skip_throw": false
+        },
+        "Player3": {
+            "number": 3,
+            "money": 1500,
+            "color": "blue",
+            "throw": false,
+            "property": [],
+            "in_jail": false,
+            "skip_throw": false
+        }
+    }
+}

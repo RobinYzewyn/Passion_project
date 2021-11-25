@@ -1,27 +1,27 @@
 import QRCode from "./QRCodePage";
 import QRCamera from "./QRCamera";
-import { useState } from "react";
-import Bord from "./BoardInterface";
+import { useState, useEffect } from "react";
 
 export default function Homepage() {
     const [page, setPage] = useState('');
 
+    
+
     return (
-        <Bord />
-    // <div>
-    //     {page === '' ? 
-    //     <div>
-    //         <button onClick={() => setPage('create')}>Create game</button>
-    //         <button onClick={() => setPage('join')}>Join game</button>
-    //     </div> 
-    //     : 
-    //     <div>
-    //         {
-    //         page === 'create' ? <div><QRCode /></div> : (
-    //         page === 'join' ? <div><QRCamera /></div> : 
-    //         '')}  
-    //     </div>
-    //     }
-    // </div>
+    <div>
+        {page === '' ? 
+        <div>
+            <button onClick={() => setPage('create')}>Create game</button>
+            <button onClick={() => setPage('join')}>Join game</button>
+        </div> 
+        : 
+        <div>
+            {
+            page === 'create' ? <div><QRCode /></div> : (
+            page === 'join' ? <div><QRCamera /></div> : 
+            '')}  
+        </div>
+        }
+    </div>
     )
 }

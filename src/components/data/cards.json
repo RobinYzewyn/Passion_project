@@ -1,0 +1,34 @@
+{
+    "cards": [
+        {
+            "id": 0,
+            "type": "normal",
+            "text": "Je bent in een gulle bui! Geef een speler naar keuze 30 euro"
+        },
+        {
+            "id": 1,
+            "type": "normal",
+            "text": "Je bent gepakt op doping! Betaal 50 euro aan de bank"
+        },
+        {
+            "id": 2,
+            "type": "normal",
+            "text": "Je abonnement is verlopen, verleng het voor 20 euro"
+        },
+        {
+            "id": 3,
+            "type": "normal",
+            "text": "Het lijkt erop dat je een tijdje geen benen hebt getraind, ga naar het squatrek"
+        },
+        {
+            "id": 4,
+            "type": "active",
+            "text": "Een challenge voor jou! Probeer 1 pistol squat te doen. Indien dit niet lukt, doe 5 push-ups"
+        },
+        {
+            "id": 5,
+            "type": "active",
+            "text": "Het spel heeft besloten dat jij je buikspieren moet trainen! Doe 20 sit-ups"
+        }
+    ]
+}
