@@ -2,33 +2,33 @@
     "cards": [
         {
             "id": 0,
-            "type": "normal",
-            "text": "Je bent in een gulle bui! Geef een speler naar keuze 30 euro"
+            "type": "active",
+            "text": "Een challenge voor jou! Probeer 1 pistol squat te doen. Indien dit niet lukt, doe 5 pushups"
         },
         {
             "id": 1,
-            "type": "normal",
-            "text": "Je bent gepakt op doping! Betaal 50 euro aan de bank"
+            "type": "active",
+            "text": "Het spel heeft besloten dat jij je buikspieren moet trainen! Doe 20 Sit-ups"
         },
         {
             "id": 2,
-            "type": "normal",
-            "text": "Je abonnement is verlopen, verleng het voor 20 euro"
+            "type": "active",
+            "text": "De gym heeft besloten dat jij 10 burpees moet doen voor hun! "
         },
         {
             "id": 3,
-            "type": "normal",
-            "text": "Het lijkt erop dat je een tijdje geen benen hebt getraind, ga naar het squatrek"
+            "type": "active",
+            "text": "Tijd voor de benen te laten werken. Doe gedurende 20 seconden zoveel mogelijk lunges"
         },
         {
             "id": 4,
             "type": "active",
-            "text": "Een challenge voor jou! Probeer 1 pistol squat te doen. Indien dit niet lukt, doe 5 push-ups"
+            "text": "Laat je maar eens gaan! Doe gedurende 20 seconden zoveel mogelijk High knees"
         },
         {
             "id": 5,
             "type": "active",
-            "text": "Het spel heeft besloten dat jij je buikspieren moet trainen! Doe 20 sit-ups"
+            "text": "Een pittige oefening voor jou. Ga gedurende 30 seconden in een plank positie zitten"
         }
     ]
 }

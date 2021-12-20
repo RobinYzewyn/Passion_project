@@ -2,6 +2,7 @@ import QRCode from "react-qr-code";
 import io from "socket.io-client";
 import { useState, useEffect } from "react"
 import Lobby from "./Lobby";
+import styles from "./QRcodepage.module.css"
 let socket;
 
 export default function QRCodePage(){
@@ -31,7 +32,24 @@ export default function QRCodePage(){
 		}
 		setRoom(result);
 		socket.emit('create_room', result);
+
+		fetchFunction(result);
 	}
+
+	const fetchFunction = async (roomCode) =>{
+    	const fet = await fetch('http://localhost:8000/data');
+    	const data = await fet.json()	
+    	data[roomCode] = data.template	
+    	const fet2 = await fetch('http://localhost:8000/data', {
+    	    method: 'POST',
+    	    headers: {
+    	        'Content-Type': 'application/json',
+    	    },
+    	    body: JSON.stringify(data),
+    	})
+    	const res2 = await fet2.json();
+    	console.log(res2);
+    }
 
 	const closeRoom = () =>{		
 		setstartGame(true);
@@ -41,10 +59,12 @@ export default function QRCodePage(){
     return (
         <div>
 			{!startGame && amountUsers < 5 ? 
-			<div>
-				<p>Code: {room}</p>
-				<p>Players in room: {amountUsers}</p>
-				<QRCode value={room} />
+			<div className={styles.containerQRP}>
+				<div className={styles.QRPBG}></div>
+				<div className={styles.qrCodeBG}>
+					<QRCode className={styles.qrCode} value={room}/>
+				</div>
+				<p>Players in room: {amountUsers > 0 ? amountUsers-1 : amountUsers}</p>
 				<button onClick={()=>closeRoom()}>Start game</button>
 			</div> 
 			: 

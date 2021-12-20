@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import io from "socket.io-client";
 import CreatePlayer from "./CreatePlayer";
+import styles from "./Lobby.module.css"
 
 let socket;
 let timeInterval;
@@ -39,19 +40,41 @@ export default function Lobby({room, amountUsers, creatorJoined, playerNumber}){
     socket.on('receive_timer', (seconds)=>{
         setseconds(seconds);
     })
+
+    socket.on('user_left', ()=>{
+        console.log('user left');
+        removeJson()
+    })
   })
+
+    const removeJson = async () =>{
+        const fet = await fetch('http://localhost:8000/data');
+        const data = await fet.json();
+        delete data[room];
+
+        const fet2 = await fetch('http://localhost:8000/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        const res2 = await fet2.json();
+        await window.location.reload();
+    }
+
+    
 
     return (
         <div>
             {seconds !== 0 ? 
-            <div>
-                <p>Lobby: {room}</p>
-                <p>Verbonden apparaten: {amountUsers}</p>
+            <div className={styles.lobbyDiv}>
+                <p className={styles.titleLobby}>Fitopoly</p>
                 {seconds < 6 ? 
                 <div>
                     <p>Veel succes!</p>
                     <p>Spel start in {seconds} seconden.</p>
-                </div> : ''}
+                </div> : <p>Wachten op het startsignaal van de computer...</p>}
                 
             </div> 
             :

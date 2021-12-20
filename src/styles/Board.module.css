@@ -1,11 +1,11 @@
+@import url("https://use.typekit.net/ala5vzs.css");
+
 .player_one {
     position: absolute;
     width: 2rem;
     height: 2rem;
     background-color: red;
     border-radius: 100%;
-    left: 485px;
-    top: 30px;
 }
 
 .player_two {
@@ -14,8 +14,6 @@
     height: 2rem;
     background-color: blue;
     border-radius: 100%;
-    left: 420px;
-    top: 30px;
 }
 
 .player_three {
@@ -24,8 +22,6 @@
     height: 2rem;
     background-color: green;
     border-radius: 100%;
-    left: 420px;
-    top: 100px;
 }
 
 .player_four {
@@ -34,252 +30,551 @@
     height: 2rem;
     background-color: yellow;
     border-radius: 100%;
-    top: 100px;
-    left: 485px;
 }
 
+.middle {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(195, 209, 236);
+}
 
+.playerOne_gradient {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
 
+.playerTwo_gradient {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
 
+.playerThree_gradient {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
 
-
-
-
+.playerFour_gradient {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
 
 .board {
-    width: 55rem;
-    height: 55rem;
-    background-color: #B0E6D6;
+    width: 100%;
+    height: 100vh;
+    background-color: #F2FCFE;
     margin: auto auto;
-
     display: grid;
-    grid-template-columns: repeat(13, 4.2307692308rem);
-    grid-template-rows: repeat(13, 4.2307692308rem);
-    margin-top: 1rem;
-
-    font-size: .6rem;
-    text-align: center;
-}
-
-.board div{
-    border: .1rem solid gray;
-}
-
-.middleBoard {
-    grid-row: 3/12;
-    grid-column: 3/12;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.corner {
-    background-color: tomato;
+    grid-template-columns: repeat(10, calc(100% / 10));
+    grid-template-rows: repeat(6, calc(100vh / 6));
+    font-size: 1rem;
+    font-family: soleil, sans-serif;
+    text-transform: uppercase;
 }
 
 .start {
-    grid-row: 1/3;
-    grid-column: 1/3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    border: .1rem solid rgb(0, 0, 0);
 }
 
 .one {
-    grid-row: 1/3;
-    grid-column: 3/4;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 2/3;
+    transform: scale(-1);
+    background: linear-gradient(#C2FFFF, #5BB0F9);
+}
+
+.nameTop {
+    margin-top: 1rem;
+}
+
+.priceTop {
+    margin-top: 4rem;
+}
+
+.one div {
+    width: 100%;
+    height: 2rem;
+    background-color: #4fb6b6;
+    border-bottom: .15rem solid rgb(32, 32, 32);
 }
 
 .card_one {
-    grid-row: 1/3;
-    grid-column: 4/5;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 3/4;
+    transform: scale(-1);
 }
 
 .two {
-    grid-row: 1/3;
-    grid-column: 5/6;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 4/5;
+    transform: scale(-1);
+    background-color: #ecc6b7;
 }
 
-.tax_one {
-    grid-row: 1/3;
-    grid-column: 6/7;
-}
-
-.station_one {
-    grid-row: 1/3;
-    grid-column: 7/8;
+.two div {
+    width: 100%;
+    height: 2rem;
+    background-color: #D3420A;
 }
 
 .three {
-    grid-row: 1/3;
-    grid-column: 8/9;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 5/6;
+    transform: scale(-1);
+    background-color: #ecc6b7;
 }
 
-.card_two {
-    grid-row: 1/3;
-    grid-column: 9/10;
+.three div {
+    width: 100%;
+    height: 2rem;
+    background-color: #D3420A;
+}
+
+.station_one {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 6/7;
+    transform: scale(-1);
+}
+
+.tax_one {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 7/8;
+    transform: scale(-1);
 }
 
 .four {
-    grid-row: 1/3;
-    grid-column: 10/11;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 8/9;
+    transform: scale(-1);
+    background-color: #c9e8f3;
+}
+
+.four div {
+    width: 100%;
+    height: 2rem;
+    background-color: #77c3df;
 }
 
 .five {
-    grid-row: 1/3;
-    grid-column: 11/12;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
+    grid-column: 9/10;
+    transform: scale(-1);
+    background-color: #c9e8f3;
+}
+
+.five div {
+    width: 100%;
+    height: 2rem;
+    background-color: #77c3df;
 }
 
 .jail {
-    grid-row: 1/3;
-    grid-column: 12/14;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.six {
-    grid-column: 12/14
-}
-
-.company_one {
-    grid-column: 12/14
-}
-
-.seven {
-    grid-column: 12/14
-}
-
-.eight {
-    grid-column: 12/14
-}
-
-.station_two {
-    grid-column: 12/14
-}
-
-.nine {
-    grid-column: 12/14
-}
-
-.card_three {
-    grid-column: 12/14
-}
-
-.ten {
-    grid-column: 12/14
-}
-
-.eleven {
-    grid-column: 12/14
-}
-
-.rest {
-    grid-column: 12/14;
-    grid-row: 12/14;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.twelve {
-    grid-row: 12/14;
-    grid-column: 11/12;
-}
-
-.card_four {
-    grid-row: 12/14;
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 1/2;
     grid-column: 10/11;
 }
 
-.thirteen {
-    grid-row: 12/14;
-    grid-column: 9/10;
+.six {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 10/11;
+    grid-row: 2/3;
+    background-color: #e6b4d3;
+    display: grid;
+    grid-template-columns: 2rem 5.5rem 3rem;
 }
 
-.fourteen {
-    grid-row: 12/14;
-    grid-column: 8/9;
+.nameRight {
+    transform: rotate(-90deg);
+    grid-column: 2/3;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
 }
 
-.station_three {
-    grid-row: 12/14;
-    grid-column: 7/8;
-}
-
-.fifteen {
-    grid-row: 12/14;
-    grid-column: 6/7;
-}
-
-.sixteen {
-    grid-row: 12/14;
-    grid-column: 5/6;
-}
-
-.company_two {
-    grid-row: 12/14;
-    grid-column: 4/5;
-}
-
-.seventeen {
-    grid-row: 12/14;
+.priceRight {
+    transform: rotate(-90deg);
+    margin-bottom: 2rem;
     grid-column: 3/4;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
 }
 
-.tojail {
-    grid-row: 12/14;
-    grid-column: 1/3;
+.six div {
+    grid-column: 1/2;
+    height: 100%;
+    width: 2rem;
+    background-color: #F027A5;
+}
+
+.seven {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 10/11;
+    grid-row: 3/4;
+    background-color: #e6b4d3;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.eighteen {
-    grid-column: 1/3;
-    grid-row: 11/12;
+.seven div {
+    height: 100%;
+    width: 2rem;
+    background-color: #F027A5;
 }
 
-.nineteen {
-    grid-column: 1/3;
-    grid-row: 10/11;
-}
-
-.card_five {
-    grid-column: 1/3;
-    grid-row: 9/10;
-}
-
-.twenty {
-    grid-column: 1/3;
-    grid-row: 8/9;
-}
-
-.station_four {
-    grid-column: 1/3;
-    grid-row: 7/8;
-}
-
-.card_six {
-    grid-column: 1/3;
-    grid-row: 6/7;
-}
-
-.twentyone {
-    grid-column: 1/3;
-    grid-row: 5/6;
-}
-
-.tax_two {
-    grid-column: 1/3;
+.card_four {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 10/11;
     grid-row: 4/5;
 }
 
-.twentytwo {
-    grid-column: 1/3;
+.eight {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 10/11;
+    grid-row: 5/6;
+    background-color: #e7cfad;
+    display: flex;
+}
+
+.eight div {
+    height: 100%;
+    width: 2rem;
+    background-color: #F6A32C;
+}
+
+.rest {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 10/11;
+    grid-row: 6/7;
+}
+
+.nine {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 9/10;
+    background-color: #f3b7b6;
+}
+
+.nine div {
+    width: 100%;
+    height: 2rem;
+    background-color: #F01C1A;
+}
+
+.nameBottom {
+    margin-top: 1rem;
+}
+
+.priceBottom {
+    margin-top: 4rem;
+}
+
+.ten {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 8/9;
+    background-color: #f3b7b6;
+}
+
+.ten div {
+    width: 100%;
+    height: 2rem;
+    background-color: #F01C1A;
+}
+
+.card_two {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 7/8;
+}
+
+.eleven {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 6/7;
+    background-color: #f3b7b6;
+}
+
+.eleven div {
+    width: 100%;
+    height: 2rem;
+    background-color: #F01C1A;
+}
+
+.station_two {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 5/6;
+}
+
+.twelve {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 4/5;
+    background-color: #f0eed7;
+}
+
+.twelve div {
+    width: 100%;
+    height: 2rem;
+    background-color: #f5dd07;
+}
+
+.tax_two {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 3/4;
+}
+
+.thirteen {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 2/3;
+    background-color: #f0eed7;
+}
+
+.thirteen div {
+    width: 100%;
+    height: 2rem;
+    background-color: #f5dd07;
+}
+
+.tojail {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-row: 6/7;
+    grid-column: 1/2;
+}
+
+.fourteen {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 1/2;
+    grid-row: 5/6;
+    background-color: #c4f0d7;
+    display: grid;
+    grid-template-columns: 3rem 5.5rem 2rem;
+}
+
+.fourteen div {
+    height: 100%;
+    width: 2rem;
+    background-color: #51CE88;
+    grid-column: 3/4;
+    grid-row: 1/4;
+}
+
+.nameLeft {
+    transform: rotate(90deg);
+    margin: 0;
+    grid-column: 2/3;
+    grid-row: 1/4;
+    margin-top: 0rem;
+    margin-left: -6rem;
+}
+
+.priceLeft {
+    transform: rotate(90deg);
+    margin: 0;
+    grid-column: 1/2;
+    grid-row: 1/4;
+    margin-left: -9rem;
+}
+
+.card_three {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 1/2;
     grid-row: 3/4;
 }
+
+.fifteen {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 1/2;
+    grid-row: 4/5;
+    background-color: #c4f0d7;
+    display: grid;
+    grid-template-columns: 3rem 5.5rem 2rem;
+}
+
+.fifteen div {
+    height: 100%;
+    width: 2rem;
+    background-color: #51CE88;
+    grid-column: 3/4;
+    grid-row: 1/4;
+}
+
+.fifteen p {
+    transform: rotate(90deg);
+}
+
+.sixteen {
+    border: .1rem solid rgb(0, 0, 0);
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: #9ebde2;
+    display: grid;
+    grid-template-columns: 3rem 5.5rem 2rem;
+}
+
+.sixteen div {
+    height: 100%;
+    width: 2rem;
+    background-color: #2D72C7;
+    grid-column: 3/4;
+    grid-row: 1/4;
+}
+
+.sixteen p {
+    transform: rotate(90deg);
+}
+
+.cam1 {
+    grid-row: 2/6;
+    grid-column: 2/6;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgb(104, 104, 104);
+}
+
+.cam2 {
+    grid-row: 2/6;
+    grid-column: 6/10;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgb(104, 104, 104);
+}
+
+.position {
+    color: black;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.boarddesign {
+    position: absolute;
+    top: 75px;
+    left: 110px;
+    height: 80%;
+    width: auto;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.ring {
+    position: absolute;
+    z-index: 2;
+}
+
+.oxygen {
+    position: absolute;
+    z-index: 2;
+    margin-top: 4rem;
+    margin-left: -3.3rem;
+}
+
+.basicfit {
+    position: absolute;
+    z-index: 2;
+    margin-top: -2.3rem;
+}
+
+.bankjes {
+    position: absolute;
+    z-index: 2;
+    margin-left: 3rem;
+}
+
+.benchpress {
+    position: absolute;
+    z-index: 2;
+}
+
+.cables {
+    position: absolute;
+    z-index: 2;
+    margin-left: 3rem;
+}
+
+.deadlift {
+    position: absolute;
+    z-index: 2;
+    margin-top: -5rem;
+    right: 5rem;
+}
+
+.dumbbells {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1rem;
+}
+
+.gewichten1 {
+    position: absolute;
+    z-index: 2;
+    margin-top: 4rem;
+}
+
+.gewichten2 {
+    position: absolute;
+    z-index: 2;
+    margin-top: 4rem;
+}
+
+.preacher {
+    position: absolute;
+    z-index: 2;
+}
+
+.yogamat {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1rem;
+}
+
+.zak_top {
+    position: absolute;
+    z-index: 2;
+}
+
+.zak_midden {
+    position: absolute;
+    z-index: 2;
+}
+
+.zak_onder {
+    position: absolute;
+    z-index: 2;
+}
+
+.rdndf {
+    position: absolute;
+    left: 44%;
+    top: 44%;
+    z-index: 999999999999
+}
+
 
 
 

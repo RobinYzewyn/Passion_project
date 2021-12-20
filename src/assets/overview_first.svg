@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31.999" height="32" viewBox="0 0 31.999 32">
+  <g id="XMLID_109_" transform="translate(-0.138 -0.138)">
+    <g id="XMLID_110_" transform="translate(0.069 3.276)">
+      <ellipse id="XMLID_138_" cx="3" cy="2" rx="3" ry="2" transform="translate(4.069 8.862)" fill="#bf720d"/>
+      <ellipse id="XMLID_169_" cx="5.5" cy="5" rx="5.5" ry="5" transform="translate(0.069 -0.138)" fill="#bf720d"/>
+      <ellipse id="XMLID_197_" cx="1.5" cy="2.5" rx="1.5" ry="2.5" transform="translate(3.069 2.862)" fill="#233d93"/>
+    </g>
+    <g id="XMLID_221_" transform="translate(22.517 3.276)">
+      <ellipse id="XMLID_222_" cx="3" cy="2" rx="3" ry="2" transform="translate(-0.38 8.862)" fill="#ff9811"/>
+      <circle id="XMLID_223_" cx="5" cy="5" r="5" transform="translate(-0.38 -0.138)" fill="#ff9811"/>
+      <ellipse id="XMLID_224_" cx="1.5" cy="2.5" rx="1.5" ry="2.5" transform="translate(3.62 2.862)" fill="#233d93"/>
+    </g>
+    <path id="XMLID_225_" d="M50,30v2.013a11.074,11.074,0,0,0,22.148,0V30Z" transform="translate(-44.971 -26.985)" fill="#ffda44"/>
+    <path id="XMLID_226_" d="M61.074,30H50v2.013A11.074,11.074,0,0,0,61.074,43.088Z" transform="translate(-44.971 -26.985)" fill="#ff9811"/>
+    <path id="XMLID_41_" d="M160,210h3.02l3.02,6.04H160Z" transform="translate(-143.897 -188.863)" fill="#ffda44"/>
+    <rect id="XMLID_40_" width="3" height="11" transform="translate(16.137 11.137)" fill="#ffda44"/>
+    <rect id="XMLID_39_" width="3" height="11" transform="translate(13.137 11.137)" fill="#ff9811"/>
+    <path id="XMLID_38_" d="M103.02,210h3.02v6.04H100Z" transform="translate(-89.937 -188.863)" fill="#ff9811"/>
+    <rect id="XMLID_227_" width="6" height="5" transform="translate(10.137 27.137)" fill="#bf720d"/>
+    <rect id="XMLID_228_" width="6" height="5" transform="translate(16.137 27.137)" fill="#ff9811"/>
+    <rect id="XMLID_229_" width="4" height="3" transform="translate(12.137 29.137)" fill="#ff9811"/>
+    <rect id="XMLID_230_" width="4" height="3" transform="translate(16.137 29.137)" fill="#ffda44"/>
+    <g id="XMLID_231_" transform="translate(4.344 0.069)">
+      <rect id="XMLID_232_" width="12" height="3" transform="translate(-0.207 0.069)" fill="#bf720d"/>
+      <rect id="XMLID_233_" width="12" height="3" transform="translate(11.793 0.069)" fill="#ff9811"/>
+    </g>
+  </g>
+</svg>

@@ -10,7 +10,7 @@ export default function ABasicComponent({room}){
 
   useEffect(()=>{
     socket.emit('create_room', room);  
-  })
+  }, [])
 
     return (
        <div>

@@ -2,6 +2,7 @@ import QrReader from 'react-qr-reader'
 import Lobby from "./Lobby"
 import { useState, useEffect } from "react"
 import io from "socket.io-client";
+import styles from "./QRCamera.module.css"
 let socket;
 let input;
 let closeNumber = false;
@@ -16,7 +17,6 @@ export default function QRCamera(){
   const [number, setnumber] = useState(1);
   useEffect(()=>{
     socket.on('successful_connection', (amountPlayers)=>{
-      console.log('succes', amountPlayers);
       setamountUsers(amountPlayers);
       if(!closeNumber){
         closeNumber = true;
@@ -49,12 +49,11 @@ export default function QRCamera(){
     return (
         <div>
             {result === '' ? 
-            <div>
-              <p>Camera</p>
-              <p>Code: {result}</p>
-              <input onChange={(e)=>changeInput(e)} type="text"/>
-              <button onClick={()=>joinRoom()}>Join</button>
-              <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: '30%' }}/>
+            <div className={styles.containerQRC}>
+              <div className={styles.QRPBG}></div>
+              <p>Fitopoly</p>
+              <p>Scan the QR code displayed on the computer.</p>
+              <div className={styles.QRReaderBG}><QrReader delay={300} onError={handleError} onScan={handleScan} className={styles.QRReader}/></div>
             </div> 
             : 
             <div>

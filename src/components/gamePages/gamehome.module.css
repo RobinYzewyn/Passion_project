@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.title {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.info_container {
+    background-color: #9AD7F3;
+    color: #183FC6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    width: calc(100vw - 20px);
+    margin-left: 10px;
+    margin-bottom: 2rem;
+}
+
+.info_container p {
+    margin: 0;
+    margin-top: .7rem;
+}
+
+.info_container img {
+    padding: .7rem;
+}
+
+.container {
+    background-color: #052284;
+    border-radius: 10px;
+    width: calc(100vw - 20px);
+    margin-left: 10px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.container_title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.leaderboard_player {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: rgb(71,93,170);
+    background: linear-gradient(90deg, rgba(71,93,170,1) 0%, rgba(35,61,147,1) 100%);
+    border-radius: 10px;
+    margin: .5rem .6rem;
+    font-size: 1rem;
+}
+
+.leaderboard_player img {
+    margin-left: 1rem;
+}
+
+.leaderboard_player_left {
+    display: flex;
+    flex-direction: row;
+}
+
+.leaderboard_player_name {
+    margin-left: .7rem;
+}
+
+.leaderboard_player_money {
+    margin-right: .7rem;
+}
+
+.overview_bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-right: 10px;
+}
+
+.property {
+    display: flex;
+    align-items: center;
+    background: rgb(71,93,170);
+    background: linear-gradient(90deg, rgba(71,93,170,1) 0%, rgba(35,61,147,1) 100%);
+    border-radius: 10px;
+    border-left: .2rem solid #BE1D1D;
+    margin: .4rem;
+    text-align: left;
+    padding-right: 0.4rem;
+}
+
+.property img {
+    margin: 0 .8rem;
+}
+
+.property p {
+    margin: .4rem 0;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background: rgb(71,93,170);
+    background: linear-gradient(90deg, rgba(71,93,170,1) 0%, rgba(35,61,147,1) 100%);
+    border-radius: 10px;
+    margin: .4rem;
+    text-align: left;
+    padding-right: 0.4rem;
+}
+
+.card img {
+    margin: 0 .8rem;
+}
+
+.card p {
+    margin: .4rem 0;
+}
+
+.button_viewproperty {
+    border-radius: 100rem;
+    border: none;
+    background-color: #4FC8B2;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: calc(100% - .8rem);
+    padding: .7rem 0;
+    margin-top: .8rem;
+}

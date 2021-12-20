@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.pattern {
+    background-image: url("../../assets//pattern.svg");
+    background-repeat: repeat;
+    width: 250vw;
+    height: 250vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.title {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.mouse {
+    position: absolute;
+    left: 70%;
+    top: calc(40% - calc(170px/1.3));
+    z-index: 1;
+}
+
+.card_back {
+    position: absolute;
+    left: calc(50% - calc(278px/2));
+    top: 25%;
+}
+
+.card_backAni {
+    position: absolute;
+    left: calc(50% - calc(278px/2));
+    top: 25%;
+    transition: transform 1s;
+    animation: flipClose 1s infinite;
+}
+
+.card_front {
+    position: absolute;
+    left: calc(50% - calc(278px/2));
+    top: 25%;
+}
+
+.card_frontAni {
+    position: absolute;
+    left: calc(50% - calc(278px/2));
+    top: 25%;
+    transition: transform 1s;
+    animation: flipOpen 1s infinite;
+}
+
+.taskContent {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    width: 250px;
+    left: calc(50% - calc(250px/2));
+    top: 30%;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+}
+
+.buttonRed {
+    background-color: #F1422D;
+    border: none;
+    color: white;
+    border-radius: 100rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: .6rem 0;
+    width: 80%;
+}
+
+.cardDiv {
+  width: 100vw;
+  height: 100vh;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  margin-top: -7rem;
+}
+
+.cardDiv img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.cardDiv img:last-of-type {
+    transform: rotateY(180deg);
+}
+
+@keyframes flipClose {
+   from {transform: rotateY(0deg);}
+   to {transform: rotateY(180deg);}
+}
+
+@keyframes flipOpen {
+   from {transform: rotateY(180deg);}
+   to {transform: rotateY(0deg);}
+}
+

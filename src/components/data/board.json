@@ -1,6 +1,6 @@
 {
     "board": [
-        { 
+        {
             "id": 0,
             "type": "start"
         },
@@ -30,11 +30,12 @@
         },
         {
             "id": 4,
-            "type": "tax",
+            "type": "property",
             "details": {
-                "tax_id": 1,
-                "name": "Gym membership",
-                "price": 200
+                "property_id": 3,
+                "name": "Lat pulldown",
+                "price": 100,
+                "rental_price": 70
             }
         },
         {
@@ -43,27 +44,29 @@
             "details": {
                 "station_id": 1,
                 "name": "Basic Fit",
-                "price": 200, 
+                "price": 200,
                 "rental_price": 50
             }
-        }
-        ,
+        },
         {
             "id": 6,
+            "type": "tax",
+            "details": {
+                "tax_id": 2,
+                "name": "Entrance gym",
+                "price": 200
+            }
+        },
+        {
+            "id": 7,
             "type": "property",
             "details": {
-                "property_id": 3,
-                "name": "Lat pulldown",
+                "property_id": 4,
+                "name": "Cable row",
                 "price": 100,
                 "rental_price": 70
             }
-        }
-        ,
-        {
-            "id": 7,
-            "type": "card"
-        }
-        ,
+        },
         {
             "id": 8,
             "type": "property",
@@ -73,26 +76,13 @@
                 "price": 100,
                 "rental_price": 70
             }
-        }
-        ,
+        },
         {
             "id": 9,
-            "type": "property",
-            "details": {
-                "property_id": 5,
-                "name": "Bent over row",
-                "price": 120,
-                "rental_price": 100
-            }
-        }
-        ,
+            "type": "jail"
+        },
         {
             "id": 10,
-            "type": "jail"
-        }
-        ,
-        {
-            "id": 11,
             "type": "property",
             "details": {
                 "property_id": 6,
@@ -100,21 +90,9 @@
                 "price": 140,
                 "rental_price": 105
             }
-        }
-        ,
+        },
         {
-            "id": 12,
-            "type": "company",
-            "details": {
-                "company_id": 1,
-                "name": "Fitshop",
-                "price": 150,
-                "rental_price": 75
-            }
-        }
-        , 
-        {
-            "id": 13,
+            "id": 11,
             "type": "property",
             "details": {
                 "property_id": 7,
@@ -122,10 +100,13 @@
                 "price": 140,
                 "rental_price": 105
             }
-        }
-        ,
+        },
         {
-            "id": 14,
+            "id": 12,
+            "type": "card"
+        },
+        {
+            "id": 13,
             "type": "property",
             "details": {
                 "property_id": 8,
@@ -133,21 +114,13 @@
                 "price": 160,
                 "rental_price": 120
             }
-        }
-        ,
+        },
+        {
+            "id": 14,
+            "type": "rest"
+        },
         {
             "id": 15,
-            "type": "station",
-            "details": {
-                "station_id": 2,
-                "name": "Fast Fitness",
-                "price": 200,
-                "rental_price": 50
-            }
-        }
-        ,
-        {
-            "id": 16,
             "type": "property",
             "details": {
                 "property_id": 9,
@@ -155,15 +128,9 @@
                 "price": 180,
                 "rental_price": 125
             }
-        }
-        ,
+        },
         {
-            "id": 17,
-            "type": "card"
-        }
-        ,
-        {
-            "id": 18,
+            "id": 16,
             "type": "property",
             "details": {
                 "property_id": 10,
@@ -171,10 +138,13 @@
                 "price": 180,
                 "rental_price": 125
             }
-        }
-        ,
+        },
         {
-            "id": 19,
+            "id": 17,
+            "type": "card"
+        },
+        {
+            "id": 18,
             "type": "property",
             "details": {
                 "property_id": 11,
@@ -182,53 +152,9 @@
                 "price": 200,
                 "rental_price": 140
             }
-        }
-        ,
+        },
         {
-            "id": 20,
-            "type": "rest"
-        }
-        ,
-        {
-            "id": 21,
-            "type": "property",
-            "details": {
-                "property_id": 12,
-                "name": "Hammer curl",
-                "price": 220,
-                "rental_price": 150
-            }
-        }
-        ,
-        {
-            "id": 22,
-            "type": "card"
-        }
-        ,
-        {
-            "id": 23,
-            "type": "property",
-            "details": {
-                "property_id": 13,
-                "name": "Preacher curl",
-                "price": 220,
-                "rental_price": 150
-            }
-        }
-        ,
-        {
-            "id": 24,
-            "type": "property",
-            "details": {
-                "property_id": 14,
-                "name": "Concentration curl",
-                "price": 240,
-                "rental_price": 160
-            }
-        }
-        ,
-        {
-            "id": 25,
+            "id": 19,
             "type": "station",
             "details": {
                 "station_id": 3,
@@ -236,10 +162,52 @@
                 "price": 200,
                 "rental_price": 50
             }
-        }
-        ,
+        },
         {
-            "id": 26,
+            "id": 20,
+            "type": "property",
+            "details": {
+                "property_id": 12,
+                "name": "Hammer curl",
+                "price": 220,
+                "rental_price": 150
+            }
+        },
+        {
+            "id": 21,
+            "type": "tax",
+            "details": {
+                "tax_id": 2,
+                "name": "Entrance gym",
+                "price": 200
+            }
+        },
+        {
+            "id": 22,
+            "type": "property",
+            "details": {
+                "property_id": 12,
+                "name": "Reverse curl",
+                "price": 220,
+                "rental_price": 150
+            }
+        },
+        {
+            "id": 23,
+            "type": "to_jail"
+        },
+        {
+            "id": 24,
+            "type": "property",
+            "details": {
+                "property_id": 14,
+                "name": "Squat",
+                "price": 240,
+                "rental_price": 160
+            }
+        },
+        {
+            "id": 25,
             "type": "property",
             "details": {
                 "property_id": 15,
@@ -247,8 +215,11 @@
                 "price": 260,
                 "rental_price": 170
             }
-        }
-        ,
+        },
+        {
+            "id": 26,
+            "type": "card"
+        },
         {
             "id": 27,
             "type": "property",
@@ -257,119 +228,6 @@
                 "name": "Hip thrust",
                 "price": 260,
                 "rental_price": 170
-            }
-        }
-        ,
-        {
-            "id": 28,
-            "type": "company",
-            "details": {
-                "company_id": 2,
-                "name": "Bodyfit",
-                "price": 150,
-                "rental_price": 75
-            }
-        }
-        ,
-        {
-            "id": 29,
-            "type": "property",
-            "details": {
-                "property_id": 17,
-                "name": "Leg extension",
-                "price": 280,
-                "rental_price": 190
-            }
-        }
-        ,
-        {
-            "id": 30,
-            "type": "to_jail"
-        }
-        ,
-        {
-            "id": 31,
-            "type": "property",
-            "details": {
-                "property_id": 18,
-                "name": "Dumbell chest press",
-                "price": 300,
-                "rental_price": 220
-            }
-        }
-        ,
-        {
-            "id": 32,
-            "type": "property",
-            "details": {
-                "property_id": 19,
-                "name": "Cable flyes",
-                "price": 300,
-                "rental_price": 220
-            }
-        }
-        ,
-        {
-            "id": 33,
-            "type": "card"
-        }
-        ,
-        {
-            "id": 34,
-            "type": "property",
-            "details": {
-                "property_id": 20,
-                "name": "Benchpress",
-                "price": 320,
-                "rental_price": 250
-            }
-        }
-        ,
-        {
-            "id": 35,
-            "type": "station",
-            "details": {
-                "station_id": 4,
-                "name": "JIMS Fitness",
-                "price": 200,
-                "rental_price": 50
-            }
-        }
-        ,
-        {
-            "id": 36,
-            "type": "card"
-        }
-        ,
-        {
-            "id": 37,
-            "type": "property",
-            "details": {
-                "property_id": 21,
-                "name": "Squat",
-                "price": 350,
-                "rental_price": 300
-            }
-        }
-        ,
-        {
-            "id": 38,
-            "type": "tax",
-            "details": {
-                "tax_id": 2,
-                "name": "Entrance gym",
-                "price": 200
-            }
-        }
-        ,
-        {
-            "id": 39,
-            "type": "property",
-            "details": {
-                "property_id": 22,
-                "name": "Deadlift",
-                "price": 400,
-                "rental_price": 330
             }
         }
     ]

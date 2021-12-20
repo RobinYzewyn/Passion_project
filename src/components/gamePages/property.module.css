@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.pattern {
+    background-image: url("../../assets//pattern.svg");
+    background-repeat: repeat;
+    width: 250vw;
+    height: 250vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.title {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.mascotte {
+    margin-top: 1rem;
+    margin-left: calc(50% - calc(143px/2));
+}
+
+.container {
+    background-color: #052284;
+    border-radius: 10px;
+    margin: 1rem 10px;
+    color: white;
+    text-align: center;
+    padding: .4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.container_flagAvailable {
+    margin-left: -.4rem;
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.container_flagAvailable p {
+    margin: 0;
+    background-color: #6577B3;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    width: fit-content;
+    border-top-right-radius: 100rem;
+    border-bottom-right-radius: 100rem;
+    padding: .3rem 1rem;
+    padding-left: .7rem;
+    font-weight: bold;
+}
+
+.container_flagSold {
+    margin-left: -.4rem;
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.container_flagSold p {
+    margin: 0;
+    background-color: #C72E29;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    width: fit-content;
+    border-top-right-radius: 100rem;
+    border-bottom-right-radius: 100rem;
+    padding: .3rem 1rem;
+    padding-left: .7rem;
+    font-weight: bold;
+}
+
+.container_flagYours {
+    margin-left: -.4rem;
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.container_flagYours p {
+    margin: 0;
+    background-color: #28a324;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    width: fit-content;
+    border-top-right-radius: 100rem;
+    border-bottom-right-radius: 100rem;
+    padding: .3rem 1rem;
+    padding-left: .7rem;
+    font-weight: bold;
+}
+
+.description {
+    margin: 0;
+}
+
+.buttonDecline {
+    background-color: #F1422D;
+    border: none;
+    color: white;
+    border-radius: 100rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: .6rem 0;
+    width: 46%;
+    margin-right: .3rem;
+}
+
+.buttonBuy {
+    background-color: #69D9C5;
+    border: none;
+    color: white;
+    border-radius: 100rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: .6rem 0;
+    width: 46%;
+    margin-left: .3rem;
+}
+
+.container button {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.exercise_div {
+    position: absolute;
+}
+
+.subtitle {
+    font-weight: bold;
+}
+
+.buttonPay {
+    background-color: #69D9C5;
+    border: none;
+    color: white;
+    border-radius: 100rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: .6rem 0;
+    width: 92%;
+    margin-left: .3rem;
+}
+
+.tax_icon {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stopwatch_container {
+    background-color: #052284;
+    border-radius: 10px;
+    margin: 1rem 10px;
+    color: white;
+    text-align: center;
+    padding: .4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.stopwatch_image {
+    margin: 2rem 0;
+}

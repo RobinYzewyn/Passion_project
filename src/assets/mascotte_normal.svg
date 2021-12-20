@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="143" height="148" viewBox="0 0 143 148">
+  <g id="Group_149" data-name="Group 149" transform="translate(-116 -95)">
+    <circle id="Ellipse_12" data-name="Ellipse 12" cx="71.5" cy="71.5" r="71.5" transform="translate(116 100)" fill="#062284"/>
+    <g id="Group_148" data-name="Group 148">
+      <rect id="Rectangle_285" data-name="Rectangle 285" width="46" height="51" transform="translate(165 167)" fill="#de8161"/>
+      <path id="Rectangle_286" data-name="Rectangle 286" d="M20,0H50A20,20,0,0,1,70,20V55a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V20A20,20,0,0,1,20,0Z" transform="translate(153 95)" fill="#6f0f0b"/>
+      <rect id="Rectangle_287" data-name="Rectangle 287" width="83" height="14" rx="7" transform="translate(147 141)" fill="#ea8c69"/>
+      <rect id="Rectangle_288" data-name="Rectangle 288" width="77" height="8" rx="4" transform="translate(150 144)" fill="#e3815c"/>
+      <path id="Union_15" data-name="Union 15" d="M33,94.5h0c-7.47-.148-10.617-3.66-15.379-8.976C16.2,83.938,14.6,82.145,12.7,80.246c-5.185-5.184-9.593-10.818-11.507-14.7A13.579,13.579,0,0,1,0,61V23A12,12,0,0,1,12,11H54A12,12,0,0,1,66,23V61a13.565,13.565,0,0,1-1.191,4.543c-1.912,3.884-6.322,9.518-11.507,14.7-1.9,1.9-3.5,3.691-4.92,5.272C43.618,90.835,40.471,94.347,33,94.5Z" transform="translate(155 104)" fill="#f59977"/>
+      <path id="Union_24" data-name="Union 24" d="M33,45.023c-7.47-.148-10.617-3.659-15.38-8.976C16.2,34.465,14.6,32.674,12.7,30.775,7.513,25.589,3.1,19.955,1.192,16.071A13.639,13.639,0,0,1,0,11.528V0A49.9,49.9,0,0,0,27.289,11.029H33v0h5.711A49.891,49.891,0,0,0,66,0V11.527a13.585,13.585,0,0,1-1.191,4.543c-1.912,3.884-6.322,9.518-11.507,14.7-1.9,1.9-3.5,3.692-4.921,5.273C43.618,41.362,40.471,44.874,33,45.023Z" transform="translate(155 153.473)" fill="#6f0f0b" opacity="0.08"/>
+      <rect id="Rectangle_303" data-name="Rectangle 303" width="5" height="11" rx="2.5" transform="translate(201 133)" fill="#010101"/>
+      <rect id="Rectangle_304" data-name="Rectangle 304" width="5" height="11" rx="2.5" transform="translate(171 133)" fill="#010101"/>
+      <rect id="Rectangle_305" data-name="Rectangle 305" width="5.5" height="15" rx="2.75" transform="translate(181 132) rotate(90)" fill="#6f0f0b"/>
+      <rect id="Rectangle_306" data-name="Rectangle 306" width="5.5" height="15" rx="2.75" transform="translate(211 132) rotate(90)" fill="#6f0f0b"/>
+      <rect id="Rectangle_307" data-name="Rectangle 307" width="5" height="29" rx="2.5" transform="translate(203 166) rotate(90)" fill="#010101"/>
+      <path id="Rectangle_308" data-name="Rectangle 308" d="M10,0H37A10,10,0,0,1,47,10v3a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(165 155)" fill="#6f0f0b"/>
+      <rect id="Rectangle_309" data-name="Rectangle 309" width="2" height="7" rx="1" transform="translate(189 187) rotate(180)" fill="#010101" opacity="0.1"/>
+    </g>
+    <path id="Intersection_5" data-name="Intersection 5" d="M10.314,106.812a23.038,23.038,0,0,1,21.971-1.86A16.977,16.977,0,0,1,46,98h54a16.979,16.979,0,0,1,13.714,6.952,23.045,23.045,0,0,1,21.236,1.393,71.524,71.524,0,0,1-124.635.468Z" transform="translate(114.868 100)" fill="#de8161"/>
+  </g>
+</svg>

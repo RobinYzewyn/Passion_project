@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.header {
+    height: 50px;
+    width: 92vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #183FC6;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.header_container {
+    background-color: white;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 100rem;
+    height: 26.03px;
+}
+
+.header_container p {
+    margin: 0;
+    margin-left: .4rem;
+    margin-right: .8rem;
+}
+
+.player_icon {
+    margin-left: .5rem;
+}

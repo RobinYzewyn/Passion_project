@@ -16,7 +16,7 @@
             "throw": false,
             "property": [],
             "in_jail": false,
-            "skip_throw": true
+            "skip_throw": false
         },
         "Player2": {
             "number": 2,

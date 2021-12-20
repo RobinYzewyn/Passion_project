@@ -1,0 +1,27 @@
+.lobbyDiv {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("../assets/background_dumbbells.svg");
+}
+
+.titleLobby {
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+.lobbyDiv p {
+    color: white;
+    font-family: Montserrat;
+}
+
+.lobbyDiv p:first-child {
+    margin-top: 10rem;
+}
