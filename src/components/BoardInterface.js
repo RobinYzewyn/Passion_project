@@ -4,6 +4,10 @@ import styles from "../styles/Board.module.css";
 import boarddesign from "../assets/Board_Design.svg";
 
 import ring from "../assets/gym/ring.svg";
+import ring_w from "../assets/gym/ring_w.svg"
+import ring_r from "../assets/gym/ring_r.svg";
+import ring_g from "../assets/gym/ring_g.svg"
+import ring_y from "../assets/gym/ring_y.svg";
 
 import basicfit from "../assets/gym/basicfit.svg"
 import oxygen from "../assets/gym/oxygen.svg"
@@ -63,6 +67,19 @@ import zak_top_g from "../assets/gym/zak_top_g.svg";
 import zak_midden_g from "../assets/gym/zak_midden_g.svg";
 import zak_onder_g from "../assets/gym/zak_onder_g.svg";
 
+import bankjes_w from "../assets/gym/bankjes_w.svg";
+import benchpress_w from "../assets/gym/benchpress_w.svg";
+import cables_w from "../assets/gym/cables_w.svg";
+import deadlift_w from "../assets/gym/deadlift_w.svg";
+import dumbbells_w from "../assets/gym/dumbbells_w.svg";
+import gewichten1_w from "../assets/gym/gewichten1_w.svg";
+import gewichten2_w from "../assets/gym/gewichten2_w.svg";
+import preacher_w from "../assets/gym/preacher_w.svg";
+import yogamat_w from "../assets/gym/yogamat_w.svg";
+import zak_top_w from "../assets/gym/zak_top_w.svg";
+import zak_midden_w from "../assets/gym/zak_midden_w.svg";
+import zak_onder_w from "../assets/gym/zak_onder_w.svg";
+
 import board_start from "../assets/board_start.svg";
 import board_restday from "../assets/board_restday.svg";
 import board_tojail from "../assets/board_tojail.svg";
@@ -74,9 +91,42 @@ import station from "../assets/station.svg";
 import board_jail from "../assets/jail.svg";
 import board_bed from "../assets/board_bed.svg";
 
-let socket;
+import nxtP0 from "../assets/NEXT/Player0.json";
+import nxtP1 from "../assets/NEXT/Player1.json";
+import nxtP2 from "../assets/NEXT/Player2.json";
+import nxtP3 from "../assets/NEXT/Player3.json";
 
-export default function BoardInterface({room, playerAmount}){
+import DiceTop_1 from "../assets/dice_board/DiceTop_1.json";
+import DiceTop_2 from "../assets/dice_board/DiceTop_2.json";
+import DiceTop_3 from "../assets/dice_board/DiceTop_3.json";
+import DiceTop_4 from "../assets/dice_board/DiceTop_4.json";
+import DiceTop_5 from "../assets/dice_board/DiceTop_5.json";
+import DiceTop_6 from "../assets/dice_board/DiceTop_6.json";
+
+import JailFalling from "../assets/JailFalling.json";
+
+import MoneyRain from "../assets/_money-confetti.json";
+
+import Lottie from 'react-lottie';
+
+import CardDone from "../assets/Sounds/mixkit-winning-a-coin-video-game-2069.wav";
+import EndGame from "../assets/Sounds/mixkit-completion-of-a-level-2063.wav";
+import PlayerReceivesMoney from "../assets/Sounds/mixkit-winning-an-extra-bonus-2060.wav";
+import PlayerPaysMoney from "../assets/Sounds/mixkit-unlock-new-item-game-notification-254.wav";
+import PlayerJoins from "../assets/Sounds/mixkit-arcade-retro-changing-tab-206.wav";
+import SoldProperty from "../assets/Sounds/mixkit-player-losing-or-failing-2042.wav";
+import ComesMoney from "../assets/Sounds/Here-comes-the-money.mp3";
+import JailDoor from "../assets/Sounds/JailDoor.mp3";
+import MultiPlayer from "./Multiplayer";
+
+let socket;
+let ableNext = true;
+let waveEffect = false;
+let colorAni = 'red';
+let waveActive = false;
+let playSound = false;
+
+export default function BoardInterface({room, playerAmount, playerTurn}){
 
       //=========================================================================================================================================
     /*
@@ -1080,7 +1130,6 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
         const cameras = await navigator.mediaDevices.enumerateDevices();
         let id = 4;
         for (let i = 0; i < cameras.length; i++) {
-          console.log(cameras[i])
           if(cameras[i].label === 'EOS Webcam Utility (0100:0400)'){
             id = i;
           }
@@ -1380,7 +1429,6 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
 
   useEffect(()=>{
     resetColorExercise();
-    console.log(pos1)
     //pos1Par(pos1);
     //Switch case percentage en top right bottom left
     switch (pos1) {
@@ -2358,16 +2406,309 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
   const [zak_topSource, setzak_topSource] = useState(zak_top_b);
   const [zak_middenSource, setzak_middenSource] = useState(zak_midden_b);
   const [zak_onderSource, setzak_onderSource] = useState(zak_onder_b);
+
+  const [middleColor, setmiddleColor] = useState(styles.middle);
+  const waveFunction = (color) =>{
+    waveActive = true;
+    
+    const one = () =>{
+      console.log('wave');
+      if(!waveEffect){return;}
+      if(color === 'red'){setcablesSource(cables_r);}
+      else if(color === 'blue'){setcablesSource(cables_b);}
+      else if(color === 'green'){setcablesSource(cables_g);}
+      else if(color === 'yellow'){setcablesSource(cables_y);}
+      setpreacherSource(preacher_w); setbankjesSource(bankjes_w); 
+      setringSource(ring_w); 
+      setgewichten1Source(gewichten1_w); setgewichten2Source(gewichten2_w); setzak_topSource(zak_top_w); setzak_middenSource(zak_midden_w); setzak_onderSource(zak_onder_w); setyogamatSource(yogamat_w);
+      setbenchpressSource(benchpress_w); setdeadliftSource(deadlift_w);
+      setTimeout(two, 800);
+    }
+    const two = () =>{
+      if(!waveEffect){return;}
+      if(color === 'red'){setpreacherSource(preacher_r); setbankjesSource(bankjes_r); setdumbbellsSource(dumbbells_r);}
+      else if(color === 'blue'){setpreacherSource(preacher_b); setbankjesSource(bankjes_b); setdumbbellsSource(dumbbells_b);}
+      else if(color === 'green'){setpreacherSource(preacher_g); setbankjesSource(bankjes_g); setdumbbellsSource(dumbbells_g);}
+      else if(color === 'yellow'){setpreacherSource(preacher_y); setbankjesSource(bankjes_y); setdumbbellsSource(dumbbells_y);}
+      setcablesSource(cables_w);   
+      
+      setringSource(ring_w); 
+      setgewichten1Source(gewichten1_w); setgewichten2Source(gewichten2_w); setzak_topSource(zak_top_w); setzak_middenSource(zak_midden_w); setzak_onderSource(zak_onder_w); setyogamatSource(yogamat_w);
+      setbenchpressSource(benchpress_w); setdeadliftSource(deadlift_w);
+      setTimeout(three, 800);
+    }
+    const three = () =>{
+      if(!waveEffect){return;}
+      if(color === 'red'){setringSource(ring_r);}
+      else if(color === 'blue'){setringSource(ring);}
+      else if(color === 'green'){setringSource(ring_g);}
+      else if(color === 'yellow'){setringSource(ring_y);}
+      setcablesSource(cables_w);
+      setpreacherSource(preacher_w); setbankjesSource(bankjes_w); setdumbbellsSource(dumbbells_w);
+      
+      setgewichten1Source(gewichten1_w); setgewichten2Source(gewichten2_w); setzak_topSource(zak_top_w); setzak_middenSource(zak_midden_w); setzak_onderSource(zak_onder_w); setyogamatSource(yogamat_w);
+      setbenchpressSource(benchpress_w); setdeadliftSource(deadlift_w);
+      setTimeout(four, 800);
+    }
+    const four = () =>{
+      if(!waveEffect){return;}
+      if(color === 'red'){setgewichten1Source(gewichten1_r); setgewichten2Source(gewichten2_r); setzak_topSource(zak_top_r); setzak_middenSource(zak_midden_r); setzak_onderSource(zak_onder_r); setyogamatSource(yogamat_r);}
+      else if(color === 'blue'){setgewichten1Source(gewichten1_b); setgewichten2Source(gewichten2_b); setzak_topSource(zak_top_b); setzak_middenSource(zak_midden_b); setzak_onderSource(zak_onder_b); setyogamatSource(yogamat_b);}
+      else if(color === 'green'){setgewichten1Source(gewichten1_g); setgewichten2Source(gewichten2_g); setzak_topSource(zak_top_g); setzak_middenSource(zak_midden_g); setzak_onderSource(zak_onder_g); setyogamatSource(yogamat_g);}
+      else if(color === 'yellow'){setgewichten1Source(gewichten1_y); setgewichten2Source(gewichten2_y); setzak_topSource(zak_top_y); setzak_middenSource(zak_midden_y); setzak_onderSource(zak_onder_y); setyogamatSource(yogamat_y);}
+      setcablesSource(cables_w);
+      setpreacherSource(preacher_w); setbankjesSource(bankjes_w); setdumbbellsSource(dumbbells_w); 
+      setringSource(ring_w); 
+      
+      setbenchpressSource(benchpress_w); setdeadliftSource(deadlift_w);
+      setTimeout(five, 800);
+    }
+    const five = () =>{
+      if(!waveEffect){return;}
+      if(color === 'red'){setbenchpressSource(benchpress_r); setdeadliftSource(deadlift_r);}
+      else if(color === 'blue'){setbenchpressSource(benchpress_b); setdeadliftSource(deadlift_b);}
+      else if(color === 'green'){setbenchpressSource(benchpress_g); setdeadliftSource(deadlift_g);}
+      else if(color === 'yellow'){setbenchpressSource(benchpress_y); setdeadliftSource(deadlift_y);}
+      setcablesSource(cables_w);
+      setpreacherSource(preacher_w); setbankjesSource(bankjes_w); setdumbbellsSource(dumbbells_w);
+      setringSource(ring_w); 
+      setgewichten1Source(gewichten1_w); setgewichten2Source(gewichten2_w); setzak_topSource(zak_top_w); setzak_middenSource(zak_midden_w); setzak_onderSource(zak_onder_w); setyogamatSource(yogamat_w);
+      
+      setTimeout(one, 800);
+    }
+    one();
+  }
+
+  const swipeNextPlayer = (color) =>{
+    setshowAnimationNextPlayer(true);
+    if(color === 'red'){setmiddleColor(styles.middleR);setcolorAnimationNextPlayer(nxtP0);setdumbbellsSource(dumbbells_r);setcablesSource(cables_r);setpreacherSource(preacher_r); setbankjesSource(bankjes_r);setringSource(ring_r);setgewichten1Source(gewichten1_r); setgewichten2Source(gewichten2_r); setzak_topSource(zak_top_r); setzak_middenSource(zak_midden_r); setzak_onderSource(zak_onder_r); setyogamatSource(yogamat_r);setbenchpressSource(benchpress_r); setdeadliftSource(deadlift_r);}
+    if(color === 'blue'){setmiddleColor(styles.middleB);setcolorAnimationNextPlayer(nxtP1);setdumbbellsSource(dumbbells_b);setcablesSource(cables_b);setpreacherSource(preacher_b); setbankjesSource(bankjes_b);setringSource(ring);setgewichten1Source(gewichten1_b); setgewichten2Source(gewichten2_b); setzak_topSource(zak_top_b); setzak_middenSource(zak_midden_b); setzak_onderSource(zak_onder_b); setyogamatSource(yogamat_b);setbenchpressSource(benchpress_b); setdeadliftSource(deadlift_b);}
+    if(color === 'green'){setmiddleColor(styles.middleG);setcolorAnimationNextPlayer(nxtP2);setdumbbellsSource(dumbbells_g);setcablesSource(cables_g);setpreacherSource(preacher_g); setbankjesSource(bankjes_g);setringSource(ring_g);setgewichten1Source(gewichten1_g); setgewichten2Source(gewichten2_g); setzak_topSource(zak_top_g); setzak_middenSource(zak_midden_g); setzak_onderSource(zak_onder_g); setyogamatSource(yogamat_g);setbenchpressSource(benchpress_g); setdeadliftSource(deadlift_g);}
+    if(color === 'yellow'){setmiddleColor(styles.middleY);setcolorAnimationNextPlayer(nxtP3);setdumbbellsSource(dumbbells_y);setcablesSource(cables_y);setpreacherSource(preacher_y); setbankjesSource(bankjes_y);setringSource(ring_y);setgewichten1Source(gewichten1_y); setgewichten2Source(gewichten2_y); setzak_topSource(zak_top_y); setzak_middenSource(zak_midden_y); setzak_onderSource(zak_onder_y); setyogamatSource(yogamat_y);setbenchpressSource(benchpress_y); setdeadliftSource(deadlift_y);}
+    const disableAnimationNextPlayer = () =>{
+      setshowAnimationNextPlayer(false);
+      //waveFunction(color);
+      if(color === 'red' && waveEffect){setmiddleColor(styles.middleR)}
+      else if(color === 'blue' && waveEffect){setmiddleColor(styles.middleB)}
+      else if(color === 'green' && waveEffect){setmiddleColor(styles.middleG)}
+      else if(color === 'yellow' && waveEffect){setmiddleColor(styles.middleY)}
+      else{setmiddleColor(styles.middle)}
+    }
+    setTimeout(disableAnimationNextPlayer, 3000);
+  }
+
+  const runFunctionNextPlayer = (color) =>{
+    //Next player
+    swipeNextPlayer(color);
+  }
+  const [showMoneyAnimation, setshowMoneyAnimation] = useState(false);
+  const [showJailAnimation, setshowJailAnimation] = useState(false);
+  const [showDiceAnimation, setshowDiceAnimation] = useState(false);
+  const [showAnimationNextPlayer, setshowAnimationNextPlayer] = useState(false);
+  const [colorAnimationNextPlayer, setcolorAnimationNextPlayer] = useState(nxtP0);
+  const [diceNumber, setdiceNumber] = useState(DiceTop_1);
+  const [soundEffect, setsoundEffect] = useState(PlayerJoins);
+  const [playSoundEffect, setplaySoundEffect] = useState(false);
+
+  const nextPOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: colorAnimationNextPlayer,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+  };
+
+  const boardDice = {
+      loop: true,
+      autoplay: true,
+      animationData: diceNumber,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+  };
+
+  const boardJail = {
+      loop: true,
+      autoplay: true,
+      animationData: JailFalling,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+  };
+
+  const boardMoney = {
+      loop: true,
+      autoplay: true,
+      animationData: MoneyRain,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
+  };
+
+    const [turnPlayer, setturnPlayer] = useState('Player0');
+    const [playerStatus, setplayerStatus] = useState('SOLID EFFECT');
+  useEffect(()=>{
+    socket.on('receive_playerTurn', (playerTurn)=>{
+      setturnPlayer(playerTurn);
+      if(ableNext){
+        console.log('hierin');
+        ableNext = false;
+        if(playerTurn === 'Player0'){colorAni = 'red';}
+        else if(playerTurn === 'Player1'){colorAni = 'blue';}
+        else if(playerTurn === 'Player2'){colorAni = 'green';}
+        else if(playerTurn === 'Player3'){colorAni = 'yellow';}
+        runFunctionNextPlayer(colorAni);
+
+      }
+    })
+
+    socket.on('receive_rolledDice', (diceNumber)=>{
+
+      if(diceNumber === 1){setdiceNumber(DiceTop_1);}
+      else if(diceNumber === 2){setdiceNumber(DiceTop_2);}
+      else if(diceNumber === 3){setdiceNumber(DiceTop_3);}
+      else if(diceNumber === 4){setdiceNumber(DiceTop_4);}
+      else if(diceNumber === 5){setdiceNumber(DiceTop_5);}
+      else if(diceNumber === 6){setdiceNumber(DiceTop_6);}
+      setshowDiceAnimation(true);
+       const disableDiceAnimation = () =>{
+        setshowDiceAnimation(false);
+      }
+      setTimeout(disableDiceAnimation, 10000);
+      setplayerStatus('DICE ANIMATION');
+
+      const walkingDiceDone = () =>{
+        
+        waveEffect = false;
+        waveActive = false;
+        ableNext = true;
+        console.log('stopped walking');
+        setplayerStatus('SOLID EFFECT');
+        if(colorAni === 'red'){setmiddleColor(styles.middleR);setcolorAnimationNextPlayer(nxtP0);setdumbbellsSource(dumbbells_r);setcablesSource(cables_r);setpreacherSource(preacher_r); setbankjesSource(bankjes_r);setringSource(ring_r);setgewichten1Source(gewichten1_r); setgewichten2Source(gewichten2_r); setzak_topSource(zak_top_r); setzak_middenSource(zak_midden_r); setzak_onderSource(zak_onder_r); setyogamatSource(yogamat_r);setbenchpressSource(benchpress_r); setdeadliftSource(deadlift_r);}
+        if(colorAni === 'blue'){setmiddleColor(styles.middleB);setcolorAnimationNextPlayer(nxtP1);setdumbbellsSource(dumbbells_b);setcablesSource(cables_b);setpreacherSource(preacher_b); setbankjesSource(bankjes_b);setringSource(ring);setgewichten1Source(gewichten1_b); setgewichten2Source(gewichten2_b); setzak_topSource(zak_top_b); setzak_middenSource(zak_midden_b); setzak_onderSource(zak_onder_b); setyogamatSource(yogamat_b);setbenchpressSource(benchpress_b); setdeadliftSource(deadlift_b);}
+        if(colorAni === 'green'){setmiddleColor(styles.middleG);setcolorAnimationNextPlayer(nxtP2);setdumbbellsSource(dumbbells_g);setcablesSource(cables_g);setpreacherSource(preacher_g); setbankjesSource(bankjes_g);setringSource(ring_g);setgewichten1Source(gewichten1_g); setgewichten2Source(gewichten2_g); setzak_topSource(zak_top_g); setzak_middenSource(zak_midden_g); setzak_onderSource(zak_onder_g); setyogamatSource(yogamat_g);setbenchpressSource(benchpress_g); setdeadliftSource(deadlift_g);}
+        if(colorAni === 'yellow'){setmiddleColor(styles.middleY);setcolorAnimationNextPlayer(nxtP3);setdumbbellsSource(dumbbells_y);setcablesSource(cables_y);setpreacherSource(preacher_y); setbankjesSource(bankjes_y);setringSource(ring_y);setgewichten1Source(gewichten1_y); setgewichten2Source(gewichten2_y); setzak_topSource(zak_top_y); setzak_middenSource(zak_midden_y); setzak_onderSource(zak_onder_y); setyogamatSource(yogamat_y);setbenchpressSource(benchpress_y); setdeadliftSource(deadlift_y);}
+      }
+      const animationDiceDone = () =>{
+        
+        console.log('rolled dice')
+        setplayerStatus('WAVE EFFECT');
+        waveEffect = true;
+        if(!waveActive){waveFunction(colorAni);}
+        setTimeout(walkingDiceDone, 10000);
+      }
+     
+      
+      setTimeout(animationDiceDone, 2200);
+    })
+
+    socket.on('receive_toJail', ()=>{
+      playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(JailDoor)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+      }
+
+      setshowJailAnimation(true);
+      const disableJailAnimation = () =>{
+        setshowJailAnimation(false);
+      }
+      setTimeout(disableJailAnimation, 9999);
+    })
+
+    socket.on('receive_start', ()=>{
+
+      playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(ComesMoney)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+      }
+
+      setshowMoneyAnimation(true);
+      const disableMoneyAnimation = () =>{
+        setshowMoneyAnimation(false);
+      }
+      setTimeout(disableMoneyAnimation, 4500);
+    })
+
+    socket.on('end_game', ()=>{
+      playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(EndGame)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+      }
+    })
+
+    socket.on('receive_doneCard', ()=>{
+      playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(CardDone)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+      }
+    })
+
+    socket.on('receive_soldItem', ()=>{
+      playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(SoldProperty)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+      }
+    })
+  })
+
     return (
       <div>
+        {playSoundEffect ? <MultiPlayer urls={[soundEffect]}/> : ''}
+        {showMoneyAnimation ? <div><Lottie className={styles.stopwatch_image} options={boardMoney} style={{height:'100%', position:'absolute', zIndex:5, left:0}}/><Lottie className={styles.stopwatch_image} options={boardMoney} style={{height:'100%', position:'absolute', zIndex:5, left:'50%'}}/></div> : ''}
+        {showJailAnimation ? <Lottie className={styles.stopwatch_image} options={boardJail} style={{width:'100%', position:'absolute', zIndex:5}}/> : ''}
+        {showDiceAnimation ? <Lottie className={styles.stopwatch_image} options={boardDice} style={{width:'100%', position:'absolute', zIndex:5}}/> : ''}
+        {showAnimationNextPlayer ? <Lottie className={styles.stopwatch_image} options={nextPOptions} style={{width:'100%', position:'absolute', zIndex:5}}/> : ''}
         <div className={styles.rdndf}>
-          <p>Player 1 {pos1}</p>
+          <p>Turn: {turnPlayer}</p>
+          <p>Status: {playerStatus}</p>
+          {/* <p>Player 1 {pos1}</p>
           <p>Player 2 {pos2}</p>
           <p>Player 3 {pos3}</p>
-          <p>Player 4 {pos4}</p>
+          <p>Player 4 {pos4}</p> */}
         </div>
         
-        <div className={styles.drawing} style={{opacity: 0}}>
+        <div className={styles.drawing} style={{opacity: 1}}>
           <img className={styles.ring} src={ringSource} alt="img"/>
           <img className={styles.oxygen} src={oxygenSource} alt="img"/>
           <img className={styles.basicfit} src={basicfitSource} alt="img"/>
@@ -2419,15 +2760,14 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
 
            <div className={styles.board}>
 
-              <canvas className={styles.middle}></canvas>
-              {console.log(playerAmount-1)}
+              <canvas className={middleColor}></canvas>
 
               {playerAmount-1 > 0 ? <canvas ref={gradientP1} style={{background: backgroundP1, opacity: 0.2}} className={styles.playerOne_gradient}></canvas> : ''}
               {playerAmount-1 > 1 ? <canvas ref={gradientP2} style={{background: backgroundP2, opacity: 0.2}} className={styles.playerTwo_gradient}></canvas> : ''}
               {playerAmount-1 > 2 ? <canvas ref={gradientP3} style={{background: backgroundP3, opacity: 0.2}} className={styles.playerThree_gradient}></canvas> : ''}
               {playerAmount-1 > 3 ? <canvas ref={gradientP4} style={{background: backgroundP4, opacity: 0.2}} className={styles.playerFour_gradient}></canvas> : ''}
 
-              <div style={{opacity:1}} className={styles.cam1}>
+              <div style={{opacity:0}} className={styles.cam1}>
                 {/* <p style={{color:'white', fontSize:20+'px'}}>P1 {X_P1}/{Y_P1} || {X1_P1}/{Y1_P1}</p> */}
                 {/* <p style={{color:'white'}}>P2 {X_P2}/{Y_P2} || {X1_P2}/{Y1_P2}</p>
                 <p style={{color:'white'}}>P2 {X_P3}/{Y_P3} || {X1_P3}/{Y1_P3}</p>
@@ -2442,7 +2782,7 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
                 <video id="video" autoPlay style={{display: 'none' }}></video>
                 <canvas id="canvas" style={{width:640/1.5+'px', height:480/1.5+'px'}}></canvas>
               </div>
-              <div style={{opacity:1}} className={styles.cam2}>
+              <div style={{opacity:0}} className={styles.cam2}>
 
                 {playerAmount > 3 ? <p className={styles.position}>P3 {pos3}</p> : ''} 
                 {playerAmount > 4 ? <p className={styles.position}>P4 {pos4}</p> : ''} 

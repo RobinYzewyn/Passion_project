@@ -48,11 +48,11 @@ export default function Lobby({room, amountUsers, creatorJoined, playerNumber}){
   })
 
     const removeJson = async () =>{
-        const fet = await fetch('http://localhost:8000/data');
+        const fet = await fetch('https://passionprojectjson.herokuapp.com/data');
         const data = await fet.json();
         delete data[room];
 
-        const fet2 = await fetch('http://localhost:8000/data', {
+        const fet2 = await fetch('https://passionprojectjson.herokuapp.com/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

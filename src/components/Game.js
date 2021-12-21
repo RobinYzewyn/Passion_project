@@ -8,10 +8,18 @@ import cards from "./data/cards.json";
 import { Socket } from "socket.io-client";
 import Overview from "./gamePages/Overview";
 
+import PlayerReceivesMoney from "../assets/Sounds/mixkit-winning-an-extra-bonus-2060.wav";
+import PlayerPaysMoney from "../assets/Sounds/mixkit-unlock-new-item-game-notification-254.wav";
+import PlayerBuyProperty from "../assets/Sounds/mixkit-unlock-new-item-game-notification-254.wav";
+import MultiPlayer from "./Multiplayer";
+import TapSound from "../assets/Sounds/mixkit-game-ball-tap-2073.wav";
+
 let data = players_data.roomCode;
 let data_board = board_data;
 let socket;
-export default function Game({number, moneyX, color, room, playerAmount, pos1, pos2, pos3, pos4}){
+let playSound = false;
+let currentlyPlaying = false;
+export default function Game({number, moneyX, color, room, playerAmount, pos1, pos2, pos3, pos4, playerTurn}){
     const CONNECTION_PORT = "localhost:3001/"
     useEffect(() => {
         socket = io(CONNECTION_PORT);
@@ -27,7 +35,7 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
     },[])
 
     const setData = async () =>{
-        const fet = await fetch('http://localhost:8000/data')
+        const fet = await fetch('https://passionprojectjson.herokuapp.com/data')
         const res = await fet.json();
         data = res[room].players;
         data_board = res[room].board;
@@ -39,7 +47,7 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
             setplayerData(data);
             checkWhoThrows();
             const next = async () =>{
-                const fet = await fetch('http://localhost:8000/data')
+                const fet = await fetch('https://passionprojectjson.herokuapp.com/data')
                 const res = await fet.json();
                 if(data !==  await res[room].players){
                     data = await res[room].players;
@@ -57,6 +65,20 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
             if(yourName === data.name){
                 let tmp_money = money+data.amount;
                 setmoney(tmp_money);
+
+                //SOUND Receive money
+                playSound = true;
+                if(playSound){
+                    playSound = false;
+                    setsoundEffect(PlayerReceivesMoney)
+                    setplaySoundEffect(true);
+
+                    const enableSound = () =>{
+                    playSound = true;
+                    setplaySoundEffect(false);
+                    }
+                    setTimeout(enableSound, 2000);
+                }
             }
         })
     })
@@ -143,11 +165,13 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
                 else{
                     if(data[index].number === number){
                         setthrower('You')
+                        playerTurn('Player'+number);
                         setshowDice(true);
                         setyourTurn(true);
                     }
                     else {
                         setthrower(index)
+                        playerTurn(index);
                         return;
                     }
                 }
@@ -191,14 +215,16 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
     }
     const updatePosition = (numberX) =>{
         let tmp = yourPosition + numberX;
-        if(tmp > 28){
-            tmp = tmp - 29;
+        if(tmp > 27){
+            tmp = tmp - 28;
             //Geld geven
             let indexCurrentKey = Object.keys(data)[number]
             let you = data[indexCurrentKey];
             let tmp_money = money + 200
             setmoney(tmp_money);
             you.money += 200;
+
+            socket.emit('passed_start', room);
         }
         setyourPosition(tmp);
         checkPosition(tmp);
@@ -253,8 +279,10 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
                             //setaction(`${board_data.board[position].details.name} is verkocht, betaal ${key} ${board_data.board[position].details.rental_price} euro`);
                             setScreen('soldProperty');
                             setpropertyState('property');
-                            setpropertyStatus('sold')
+                            setpropertyStatus('sold');
                             setOwner(key); setSoldProperty(board_data.board[position].details.name); setPrice(board_data.board[position].details.rental_price);
+
+                            socket.emit('soldProperty', room);
                             return;
                         }
                         else{
@@ -294,6 +322,7 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
                             setScreen('soldStation');
                             setpropertyStatus('sold')
                             setpropertyState('property');
+                            socket.emit('soldProperty', room);
                             setOwner(key); setSoldProperty(board_data.board[position].details.name);
                             return;
                         }
@@ -341,6 +370,7 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
                             setScreen('soldCompany');
                             setpropertyStatus('sold')
                             setpropertyState('property');
+                            socket.emit('soldProperty', room);
                             setOwner(key); setSoldProperty(board_data.board[position].details.name); setPrice(board_data.board[position].details.rental_price);
                             return;
                         }
@@ -374,6 +404,8 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
                 //setaction(`naar gevang`); 
                 setScreen('toJail');
                 setpropertyState('to_jail');
+
+                socket.emit('boardToJail', room);
                 break;
             default:
                 break;
@@ -382,6 +414,22 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
     }
 
     const playerDone = async () => {
+
+        if(!currentlyPlaying){
+            playSound = true;
+            if(playSound){
+                playSound = false;
+                setsoundEffect(TapSound)
+                setplaySoundEffect(true);
+
+                const enableSound = () =>{
+                playSound = true;
+                setplaySoundEffect(false);
+                }
+                setTimeout(enableSound, 2000);
+            }
+        }
+
         setyourTurn(false);
         checkWhoThrows();
         let info = {
@@ -392,12 +440,13 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
         setplayerData(data);
         socket.emit('turnNextPlayer', info);
         
-        const fet = await fetch('http://localhost:8000/data');
+        const fet = await fetch('https://passionprojectjson.herokuapp.com/data');
     	let dataX = await fet.json()	
         let board = data_board;
         let players = data;
     	dataX[room] = {board, players};
-    	const fet2 = await fetch('http://localhost:8000/data', {
+    	const fet2 = await fetch('https://passionprojectjson.herokuapp.com/data', {
+            mode:'cors',
     	    method: 'POST',
     	    headers: {
     	        'Content-Type': 'application/json',
@@ -418,6 +467,23 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
         let indexCurrentKey = Object.keys(data)[number]
         let you = data[indexCurrentKey]
         you.money = tmp_money;
+
+        //SOUND Give money
+        playSound = true;
+        currentlyPlaying = true;
+        if(playSound){
+
+            playSound = false;
+            setsoundEffect(PlayerPaysMoney)
+            setplaySoundEffect(true);
+
+            const enableSound = () =>{
+            playSound = true;
+            setplaySoundEffect(false);
+            currentlyPlaying = false;
+            }
+            setTimeout(enableSound, 2000);
+        }
 
         //Plus geld van ander
         //Socket naar ander 
@@ -442,6 +508,22 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
         let you = data[indexCurrentKey]
         you.money = tmp_money;
 
+        //SOUND BUY PROPERTY
+        playSound = true;
+        if(playSound){
+            currentlyPlaying = true;
+            playSound = false;
+            setsoundEffect(PlayerPaysMoney)
+            setplaySoundEffect(true);
+
+            const enableSound = () =>{
+            playSound = true;
+            setplaySoundEffect(false);
+            currentlyPlaying = false;
+            }
+            setTimeout(enableSound, 2000);
+        }
+
         playerDone();
     }
 
@@ -457,6 +539,22 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
         setproperties(tmp_properties);
         you.property = tmp_properties;
 
+        //SOUND BUY PROPERTY
+        playSound = true;
+        if(playSound){
+            currentlyPlaying = true;
+            playSound = false;
+            setsoundEffect(PlayerPaysMoney)
+            setplaySoundEffect(true);
+
+            const enableSound = () =>{
+            playSound = true;
+            setplaySoundEffect(false);
+            currentlyPlaying = false;
+            }
+            setTimeout(enableSound, 2000);
+        }
+
         playerDone();
     }
 
@@ -465,29 +563,12 @@ export default function Game({number, moneyX, color, room, playerAmount, pos1, p
         rollDice(val);
     }
 
+    const [soundEffect, setsoundEffect] = useState(PlayerReceivesMoney);
+    const [playSoundEffect, setplaySoundEffect] = useState(false);
+
     return (
        <div>
-           {/* 
-           PROPERTY
-            - price
-            - owner
-           screen:
-           - property ---- propertyStatus (available | sold)
-           - start
-           - tax
-           - card
-           - nothing
-           - to_jail
-
-            - soldProperty
-            - buyProperty
-
-            - playerDone (volgende, niks)
-            - payPlayer
-            - payProperty
-            - payTaxes 
-             
-            */}
+           {playSoundEffect ? <MultiPlayer urls={[soundEffect]}/> : ''}
             <Overview pos1={pos1} pos2={pos2} pos3={pos3} pos4={pos4} showCard={showCard} payPlayer={payPlayer} payProperty={payProperty} payTaxes={payTaxes} playerDone={playerDone} soldProperty={soldProperty} buyProperty={buyProperty} propertyStatus={propertyStatus} price={price} owner={owner} propertyState={propertyState} showScreen={showScreen} rolledNumber={(val)=>getRolledNumber(val)} showDice={showDice} playerAmount={playerAmount} playerData={playerData} room={room} number={number} money={money} color={color} position={yourPosition} thrower={thrower} properties={properties}/>
             
        </div> 

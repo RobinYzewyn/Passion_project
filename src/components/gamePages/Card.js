@@ -47,6 +47,8 @@ export default function Card({room, playerDone}){
   const doAction = () =>{
     console.log('actie');
     playerDone();
+
+    socket.emit('doneCard', room);
   }
 
     return (

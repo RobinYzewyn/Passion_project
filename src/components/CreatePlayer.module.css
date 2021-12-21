@@ -29,6 +29,10 @@
     height: 26.03px;
 }
 
+.money_amount p {
+    color: #183FC6;
+}
+
 .header_container p {
     margin: 0;
     margin-left: .4rem;

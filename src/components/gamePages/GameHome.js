@@ -113,25 +113,25 @@ export default function GameHome({playerAmount, playerData, thrower, money, colo
                     {playerAmount-1 > 0 ? 
                     <div className={styles.card}>
                         <img alt="exercise" src={player_red_icon}/>
-                        <p>{pos1}</p>
+                        <p>Empty{pos1}</p>
                     </div> : ''}
 
                     {playerAmount-1 > 1 ?
                     <div className={styles.card}>
                         <img alt="exercise" src={player_blue_icon}/>
-                        <p>{pos2}</p>
+                        <p>Empty{pos2}</p>
                     </div> : ''}
                     
                     {playerAmount-1 > 2 ?
                     <div className={styles.card}>
                         <img alt="exercise" src={player_green_icon}/>
-                        <p>{pos3}</p>
+                        <p>Empty{pos3}</p>
                     </div> : ''}
 
                     {playerAmount-1 > 3 ?
                     <div className={styles.card}>
                         <img alt="exercise" src={player_yellow_icon}/>
-                        <p>{pos4}</p>
+                        <p>Empty{pos4}</p>
                     </div> : ''}
                 </div>
             </div>

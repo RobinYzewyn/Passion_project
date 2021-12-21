@@ -17,11 +17,25 @@ import PH_Dice5 from "../../assets/PH_Dice5.svg";
 import PH_Dice6 from "../../assets/PH_Dice6.svg";
 import stopwatchData from "../../assets/Stopwatch.json";
 import Lottie from 'react-lottie';
+import io from "socket.io-client";
+import ClockSound from "../../assets/Sounds/mixkit-tick-tock-clock-timer-1045.wav";
+import MultiPlayer from "../Multiplayer";
 
 let countdownInterval;
 let rndNumber;
 let countNmbr = 10;
-export default function Dice({rolledNumber}){
+let socket;
+let playSound = false;
+export default function Dice({rolledNumber, room}){
+  const CONNECTION_PORT = "localhost:3001/"
+  useEffect(() => {
+      socket = io(CONNECTION_PORT);
+  }, [CONNECTION_PORT]);
+
+  useEffect(()=>{
+    socket.emit('create_room', room); 
+  },[])
+
   const [showStopwatch, setshowStopwatch] = useState(false);
   const [timerNumb, settimerNumb] = useState(10);
   const [rollNmb, setrollNmb] = useState(0);
@@ -30,11 +44,21 @@ export default function Dice({rolledNumber}){
     setshowStopwatch(false);
   }, [])
 
+  const [playSoundEffect, setplaySoundEffect] = useState(false);
+
   const rollDice = (e) => {
     console.log('click')
+
     setclassDice(styles.diceAni)
     const showAni = () =>{
       rndNumber = Math.floor(Math.random() * 6)+1;
+      const data = {
+        room: room,
+        diceNumber: rndNumber
+      }
+      socket.emit('rolledDice', data);
+
+
       setrollNmb(rndNumber)
       if(rndNumber === 1){
         setaniData(Roll1)
@@ -62,9 +86,25 @@ export default function Dice({rolledNumber}){
       }
       setshowAnimation(true);
       
+
+      
       const hideAnimation = () =>{
         setshowAnimation(false);
         setshowStopwatch(true);
+
+        
+        playSound = true;
+        if(playSound){
+          playSound = false;
+          setplaySoundEffect(true);
+
+          const enableSound = () =>{
+            playSound = true;
+            setplaySoundEffect(false);
+          }
+          setTimeout(enableSound, 2000);
+        }
+        
         
         countdownInterval = setInterval(countdown, 1000)
       }
@@ -124,6 +164,7 @@ export default function Dice({rolledNumber}){
 
           {showStopwatch ? 
           <div className={styles.stopwatchDiv}>
+            {playSoundEffect ? <MultiPlayer urls={[ClockSound]}/> : ''}
             <p className={styles.dice_result}>You rolled {rollNmb}!</p>
             <div className={styles.stopwatch_container}>
               <p className={styles.stopwatch_text}>You have {timerNumb} seconds to move your pawn.</p>

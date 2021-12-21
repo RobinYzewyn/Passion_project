@@ -2,9 +2,12 @@ import QRCode from "react-qr-code";
 import io from "socket.io-client";
 import { useState, useEffect } from "react"
 import Lobby from "./Lobby";
-import styles from "./QRcodepage.module.css"
-let socket;
+import styles from "./QRcodepage.module.css";
+import PlayerJoins from "../assets/Sounds/mixkit-arcade-retro-changing-tab-206.wav";
+import MultiPlayer from "./Multiplayer";
 
+let socket;
+let playSound = false;
 export default function QRCodePage(){
 	
     const CONNECTION_PORT = "localhost:3001/"
@@ -15,11 +18,26 @@ export default function QRCodePage(){
 	const [room, setRoom] = useState('');
 	const [amountUsers, setamountUsers] = useState(0);
 	const [startGame, setstartGame] = useState(false);
+	
+	const [soundEffect, setsoundEffect] = useState(PlayerJoins);
+  	const [playSoundEffect, setplaySoundEffect] = useState(false);
 	useEffect(()=>{
 		randomCode();
 
 		socket.on('successful_connection', (amountPlayers)=>{
 			setamountUsers(amountPlayers);
+			playSound = true;
+			if(playSound){
+				playSound = false;
+				setsoundEffect(PlayerJoins)
+				setplaySoundEffect(true);
+
+				const enableSound = () =>{
+				playSound = true;
+				setplaySoundEffect(false);
+				}
+				setTimeout(enableSound, 2000);
+			}
 		})
 	}, [])
 
@@ -37,10 +55,11 @@ export default function QRCodePage(){
 	}
 
 	const fetchFunction = async (roomCode) =>{
-    	const fet = await fetch('http://localhost:8000/data');
+    	const fet = await fetch('https://passionprojectjson.herokuapp.com/data');
     	const data = await fet.json()	
     	data[roomCode] = data.template	
-    	const fet2 = await fetch('http://localhost:8000/data', {
+    	const fet2 = await fetch('https://passionprojectjson.herokuapp.com/data', {
+			mode:'cors',
     	    method: 'POST',
     	    headers: {
     	        'Content-Type': 'application/json',
@@ -58,6 +77,7 @@ export default function QRCodePage(){
 
     return (
         <div>
+			{playSoundEffect ? <MultiPlayer urls={[soundEffect]}/> : ''}
 			{!startGame && amountUsers < 5 ? 
 			<div className={styles.containerQRP}>
 				<div className={styles.QRPBG}></div>

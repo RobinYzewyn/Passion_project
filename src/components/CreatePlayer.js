@@ -13,10 +13,13 @@ import player_red_icon from "../assets/player_red_icon.svg";
 import player_blue_icon from "../assets/player_blue_icon.svg";
 import player_green_icon from "../assets/player_green_icon.svg";
 import player_yellow_icon from "../assets/player_yellow_icon.svg";
+import MultiPlayer from "./Multiplayer";
+import TapSound from "../assets/Sounds/mixkit-game-ball-tap-2073.wav";
 
 let socket;
 let colorArray = ['red', 'blue', 'green', 'yellow'];
-
+let ableEmitPlayerTurn = true;
+let playSound = false;
 export default function CreatePlayer({room, playerNumber, amountPlayers}){
   const CONNECTION_PORT = "localhost:3001/"
   useEffect(() => {
@@ -32,7 +35,7 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
 
   useEffect(()=>{
     const fetchFunction = async (roomCode) =>{
-      const fet = await fetch('http://localhost:8000/data');
+      const fet = await fetch('https://passionprojectjson.herokuapp.com/data');
       const data = await fet.json();
       console.log(data);
     }
@@ -83,6 +86,20 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
     setamountStart(tmp);
     setyouReady(true);
     socket.emit('readPlayerCreate', room);
+
+    //SOUND CLICK
+    playSound = true;
+      if(playSound){
+        playSound = false;
+        setsoundEffect(TapSound)
+        setplaySoundEffect(true);
+
+        const enableSound = () =>{
+          playSound = true;
+          setplaySoundEffect(false);
+        }
+        setTimeout(enableSound, 2000);
+    }
   }
 
   const [aniData, setaniData] = useState(Red_Animation);
@@ -98,12 +115,28 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
     const [showColorState, setshowColorState] = useState(false);
     const [showAnimationState, setshowAnimationState] = useState(true);
 
-    const [pos1, setpos1] = useState('start');
-    const [pos2, setpos2] = useState('start');
-    const [pos3, setpos3] = useState('start');
-    const [pos4, setpos4] = useState('start');
+    const getPlayerTurn = (val) =>{
+      if(ableEmitPlayerTurn){
+        ableEmitPlayerTurn = false;
+
+        const data = {
+          room: room,
+          turnPlayer: val
+        }
+        socket.emit('playerTurn', data)
+      }
+      const trueAbleEmit = () =>{
+        ableEmitPlayerTurn = true;
+      }
+      setTimeout(trueAbleEmit, 3000);
+    }
+
+    const [soundEffect, setsoundEffect] = useState(TapSound);
+    const [playSoundEffect, setplaySoundEffect] = useState(false);
+
     return (
        <div>
+         {playSoundEffect ? <MultiPlayer urls={[soundEffect]}/> : ''}
            {player > -1 ? (
             amountPlayers !== amountStart+1 ? 
             <div>
@@ -112,13 +145,13 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
               <div className={styles.header_container}>
                   <img className={styles.money_icon} alt="money icon" src={money_icon}/>
                   <div className={styles.money_amount}>
-                      <p style={{color: "#183FC6;"}}>${money}</p>
+                      <p>${money}</p>
                   </div>
               </div> : ''}
               {showColorState ?
               <div className={styles.header_container}>
                   <img className={styles.player_icon} alt="player icon" src={color === 'red' ? player_red_icon : color === 'blue' ? player_blue_icon : color === 'green' ? player_green_icon : player_yellow_icon}/>
-                  <p style={{color: "#183FC6;"}}>Player {player}</p>
+                  <p>Player {player}</p>
               </div>
                : ''}
             </div> 
@@ -127,16 +160,16 @@ export default function CreatePlayer({room, playerNumber, amountPlayers}){
             <div className={styles.divCPInfo}>
               {showAnimationState && !showMoneyState ? <p className={styles.textInfo}>Your money</p> : ''}
               {showAnimationState && !showColorState && showMoneyState ? <p className={styles.textInfo}>Your color</p> : ''}
-              {!showAnimationState ? <div className={styles.divCPInfo}><p className={styles.textInfo}>Are you ready?</p><button className={!youReady ? styles.CPButton : styles.CPButtonDisabled} disabled={youReady} onClick={readSettings}>Yes!</button></div>: ''}
+              {!showAnimationState ? <div className={styles.divCPInfo}><p className={styles.textInfo}>Are you ready?</p><button className={!youReady ? styles.CPButton : styles.CPButtonDisabled} disabled={youReady} onClick={readSettings}>{!youReady ? 'Yes!' : "I'm ready!"}</button></div>: ''}
               {showAnimationState ? <Lottie options={defaultOptions} className={styles.animation} style={{width:'60%'}}/> : ''}
             </div> 
             </div> 
             : 
-            <Game number={playerNumber} moneyX={money} color={color} room={room} playerAmount={amountPlayers} pos1={pos1} pos2={pos2} pos3={pos3} pos4={pos4}/>
+            <Game number={playerNumber} moneyX={money} color={color} room={room} playerAmount={amountPlayers} playerTurn={(val)=>getPlayerTurn(val)}/>
            )
            : 
            <div>
-            <BoardInterface room={room} playerAmount={amountPlayers} pos1Par={pos1} pos2Par={pos2} pos3Par={pos3} pos4Par={pos4}/>
+            <BoardInterface room={room} playerAmount={amountPlayers}/>
            </div>}
        </div> 
     )

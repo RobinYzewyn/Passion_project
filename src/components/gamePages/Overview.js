@@ -43,7 +43,7 @@ export default function Overview({pos1, pos2, pos3, pos4, showCard, payPlayer, p
                 <GameHeader money={money} number={number} color={color} room={room}/>
                 {     
                 showScreen ? <Property payPlayer={payPlayer} payProperty={payProperty} payTaxes={payTaxes} playerDone={playerDone} soldProperty={soldProperty} buyProperty={buyProperty} propertyStatus={propertyStatus} price={price} owner={owner} propertyState={propertyState}/> : 
-                showDice ? <Dice rolledNumber={(val)=>setRolledNumber(val)}/> :
+                showDice ? <Dice rolledNumber={(val)=>setRolledNumber(val)} room={room}/> :
                 <GameHome pos1={pos1} pos2={pos2} pos3={pos3} pos4={pos4} playerAmount={playerAmount} playerData={playerData} thrower={thrower} money={money} color={color} number={number} properties={properties}/>
                 }
             </div> 

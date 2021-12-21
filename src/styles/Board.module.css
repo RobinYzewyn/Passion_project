@@ -40,6 +40,38 @@
     background-color: rgb(195, 209, 236);
 }
 
+.middleR {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgb(236, 195, 195), #c05656);
+}
+
+.middleB {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgb(195, 221, 236), #56abc0);
+}
+
+.middleG {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgb(198, 236, 195), #56c05b);
+}
+
+.middleY {
+    grid-row: 2/6;
+    grid-column: 2/10;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgb(236, 225, 195), #c0ad56);
+}
+
 .playerOne_gradient {
     grid-row: 2/6;
     grid-column: 2/10;
@@ -572,7 +604,7 @@ canvas {
     position: absolute;
     left: 44%;
     top: 44%;
-    z-index: 999999999999
+    z-index: 3
 }
 
 
